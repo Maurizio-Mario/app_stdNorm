@@ -1,3 +1,5 @@
+library(lattice)
+
 shinyServer(
     function(input, output){
         output$sdNorm <- renderPlot({

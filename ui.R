@@ -1,3 +1,5 @@
+library(shiny)
+
 shinyUI(pageWithSidebar(
     headerPanel("Standard Normal"),
     sidebarPanel(
