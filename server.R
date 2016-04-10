@@ -19,7 +19,7 @@ shinyServer(
                            panel.abline(v = c(z, 0), lty = 2)
                            xx <- c(-3, x[x>=-3 & x<=z], z) 
                            yy <- c(0, y[x>=-3 & x<=z], 0) 
-                           panel.polygon(xx,yy, ..., col='red')
+                           panel.polygon(xx,yy, ..., col='blue')
                        })
                 
             }else{
@@ -45,8 +45,8 @@ shinyServer(
                 my_mean <- input$mean
                 my_sd <- input$sd
                 my_x <- input$x
-                p1 <- 1- pnorm(my_x, my_mean, my_sd)
-                p1
+                p1 <- pnorm(my_x, my_mean, my_sd)
+                paste(round(p1, 2)*100, "%", sep = "")
             } else {
                 p1 <- NULL
             }
