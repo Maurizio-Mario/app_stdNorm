@@ -1,19 +1,35 @@
 library(shiny)
-
 shinyUI(pageWithSidebar(
-    headerPanel("Standard Normal"),
+    headerPanel("Standard Normal Distribution"),
     sidebarPanel(
-        numericInput('mean', 'Your mean', 0),
-        numericInput('sd', 'Your standard deviation', 0),
-        numericInput('x', 'Your score', 0),
-        checkboxInput('p1', label = 'Probability of getting a score smaller than x or z', value = FALSE)
+        wellPanel(
+            numericInput('myMean', 'Your mean', 0),
+            numericInput('mySd', 'Your standard deviation', 0),
+            numericInput('myX', 'Your score', 0),
+            conditionalPanel(
+                condition = "input.p2=='p5'",
+                numericInput('myY', 'Your second score:', 0)
+            )
+        ),
+        
+        wellPanel(
+            checkboxInput("p", "Probability?", FALSE),
+            conditionalPanel(
+                condition = "input.p==true",
+                selectInput(inputId = "p2", 
+                            label = "Select the probability:",
+                            choices = c("Less than x" = "p3",
+                                        "More than x" = "p4", 
+                                        "Between x and y" = "p5"),
+                            selected = FALSE)
+            )
+            
+        )
     ),
+    
     mainPanel(
-        h6('Feed the app with the mean and the standard deviation of a distribution. Then, add the x value that you want to identify on the standard Normal distribution. Furthermore, By checkin the box Probability, you can get the probability to find a score minor than x.'),
-        plotOutput('sdNorm'),
-        h4('Your z-score is:'),
-        verbatimTextOutput('z'),
-        h4('Probability:'),
-        verbatimTextOutput('p1')    
-        ))
+        h4('Standard Normal Curve'),
+        plotOutput("sdNorm")
+    )
+)  
 )

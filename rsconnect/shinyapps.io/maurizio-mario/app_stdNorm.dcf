@@ -1,8 +1,8 @@
 name: app_stdNorm
 account: maurizio-mario
 server: shinyapps.io
-bundleId: 415266
+bundleId: 419916
 url: https://maurizio-mario.shinyapps.io/app_stdNorm/
-when: 1460315811.53394
+when: 1460659206.26555
 asMultiple: FALSE
 asStatic: FALSE
